@@ -19,19 +19,33 @@
       background: #fff;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       padding: 15px 0;
-      text-align: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #3dbb3d;
+      text-decoration: none;
     }
 
     nav ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     nav ul li {
@@ -90,6 +104,70 @@
       top: 0;
       left: 200px;
       min-width: 230px;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #333;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .dropdown-content, .sub-dropdown-content {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .dropdown-content a, .sub-dropdown-content a {
+        padding-left: 25px;
+      }
     }
 
     /* Header */
@@ -215,7 +293,6 @@
       font-size: 0.9em;
     }
 
-    /* Mobile Fixes */
     @media (max-width: 768px) {
       .sub-dropdown-content {
         left: 0;
@@ -228,47 +305,53 @@
 
   <!-- Navbar -->
   <nav>
-    <ul>
-      <li><a href="index.html#home">Home</a></li>
-      <li class="dropdown">
-        <a href="#">Tours ▾</a>
-        <ul class="dropdown-content">
-          <li class="sub-dropdown">
-            <a href="#">Domestic Deals ▸</a>
-            <ul class="sub-dropdown-content">
-              <li><a href="amboseli.html">Amboseli Packages</a></li>
-              <li><a href="diani.html">Diani Packages</a></li>
-              <li><a href="malindi.html">Malindi Packages</a></li>
-              <li><a href="mombasa.html">Mombasa Beach Packages</a></li>
-              <li><a href="samburu.html">Samburu Packages</a></li>
-              <li><a href="tsavo.html">Tsavo Packages</a></li>
-              <li><a href="wildbeest.html">Wildbeest Migration</a></li>
-            </ul>
-          </li>
-          <li class="sub-dropdown">
-            <a href="#">International Tours ▸</a>
-            <ul class="sub-dropdown-content">
-              <li><a href="dubai.html">Dubai Adventure</a></li>
-              <li><a href="thailand.html">Thailand Getaway</a></li>
-            </ul>
-          </li>
-          <li class="sub-dropdown">
-            <a href="#">Africa Tours ▸</a>
-            <ul class="sub-dropdown-content">
-              <li><a href="serengeti.html">Serengeti Safari</a></li>
-              <li><a href="victoriafalls.html">Victoria Falls</a></li>
-              <li><a href="capetown.html">Cape Town Explorer</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-
-      <li><a href="explore.html">Explore Destinations</a></li>
-      <li><a href="nairobi_nonresident.html">Non-Residential</a></li>
-      <li><a href="galley.html">Gallery</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#contact">Contact Us</a></li>
-    </ul>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Yobby Adventures</a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="nav-menu">
+        <li><a href="index.html#home">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Tours ▾</a>
+          <ul class="dropdown-content">
+            <li class="sub-dropdown">
+              <a href="#">Domestic Deals ▸</a>
+              <ul class="sub-dropdown-content">
+                <li><a href="amboseli.html">Amboseli Packages</a></li>
+                <li><a href="diani.html">Diani Packages</a></li>
+                <li><a href="malindi.html">Malindi Packages</a></li>
+                <li><a href="mombasa.html">Mombasa Beach Packages</a></li>
+                <li><a href="samburu.html">Samburu Packages</a></li>
+                <li><a href="tsavo.html">Tsavo Packages</a></li>
+                <li><a href="wildbeest.html">Wildbeest Migration</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#">International Tours ▸</a>
+              <ul class="sub-dropdown-content">
+                <li><a href="dubai.html">Dubai Adventure</a></li>
+                <li><a href="thailand.html">Thailand Getaway</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#">Africa Tours ▸</a>
+              <ul class="sub-dropdown-content">
+                <li><a href="serengeti.html">Serengeti Safari</a></li>
+                <li><a href="victoriafalls.html">Victoria Falls</a></li>
+                <li><a href="capetown.html">Cape Town Explorer</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="nairobi_nonresident.html">Non-Residential</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact Us</a></li>
+      </ul>
+    </div>
   </nav>
 
   <header>
@@ -316,6 +399,14 @@
   <script>
     // Dropdown navbar logic
     document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("nav-menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
+
       document.querySelectorAll(".dropdown > a").forEach(link => {
         link.addEventListener("click", e => {
           e.preventDefault();
