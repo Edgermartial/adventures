@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nairobi Non-Resident Safaris & Day Trips | Yobby Adventures</title>
   <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -35,7 +36,7 @@
 
     .logo {
       font-weight: bold;
-      font-size: 1.2em;
+      font-size: 1.3em;
       color: #3dbb3d;
       text-decoration: none;
     }
@@ -72,20 +73,10 @@
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       min-width: 200px;
-      text-align: left;
       z-index: 999;
     }
 
-    .dropdown-content {
-      top: 40px;
-      left: 0;
-    }
-
-    .dropdown-content li, .sub-dropdown-content li {
-      margin: 0;
-    }
-
-    .dropdown-content a, .sub-dropdown-content a {
+    .dropdown-content li a, .sub-dropdown-content li a {
       display: block;
       padding: 10px 15px;
       color: #333;
@@ -106,12 +97,12 @@
       min-width: 230px;
     }
 
-    /* Hamburger */
+    /* Hamburger menu */
     .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
-      gap: 4px;
+      gap: 5px;
     }
 
     .hamburger span {
@@ -153,10 +144,6 @@
 
       .hamburger {
         display: flex;
-      }
-
-      nav ul li {
-        margin: 10px 0;
       }
 
       .dropdown-content, .sub-dropdown-content {
@@ -263,6 +250,8 @@
       margin-bottom: 20px;
       transition: background 0.3s ease;
       font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .book-btn:hover {
@@ -291,13 +280,6 @@
       padding: 15px;
       margin-top: 40px;
       font-size: 0.9em;
-    }
-
-    @media (max-width: 768px) {
-      .sub-dropdown-content {
-        left: 0;
-        top: 100%;
-      }
     }
   </style>
 </head>
@@ -369,7 +351,7 @@
         <h3>Day Trip to Kiambethu Tea Farm</h3>
         <p>Enjoy a serene countryside experience with a guided farm tour, tea tasting, and garden lunch.</p>
         <p class="price">From $180 per person</p>
-        <button class="book-btn" onclick="bookNow('Day Trip To Kiambethu Tea Farm')">Book Now</button>
+        <a href="booking.html" class="book-btn">Book Now</a>
       </div>
 
       <div class="package">
@@ -377,7 +359,7 @@
         <h3>Day Trip to Nairobi</h3>
         <p>Discover Nairobi’s highlights — visit Giraffe Centre, Elephant Orphanage, and Karen Blixen Museum.</p>
         <p class="price">From $150 per person</p>
-        <button class="book-btn" onclick="bookNow('Day Trip To Nairobi')">Book Now</button>
+        <a href="booking.html" class="book-btn">Book Now</a>
       </div>
 
       <div class="package">
@@ -385,7 +367,7 @@
         <h3>Day Trip to Naivasha</h3>
         <p>Enjoy a scenic drive, Crescent Island walk among wildlife, and optional Lake Naivasha boat ride.</p>
         <p class="price">From $190 per person</p>
-        <button class="book-btn" onclick="bookNow('Day Trip To Naivasha')">Book Now</button>
+        <a href="booking.html" class="book-btn">Book Now</a>
       </div>
     </div>
 
@@ -397,51 +379,35 @@
   </footer>
 
   <script>
-    // Dropdown navbar logic
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.getElementById("hamburger");
-      const navMenu = document.getElementById("nav-menu");
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
 
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-      });
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
 
-      document.querySelectorAll(".dropdown > a").forEach(link => {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          const dropdown = link.parentElement;
-          const content = dropdown.querySelector(".dropdown-content");
-          const isOpen = content.style.display === "block";
-          document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
-          content.style.display = isOpen ? "none" : "block";
-        });
-      });
-
-      document.querySelectorAll(".sub-dropdown > a").forEach(link => {
-        link.addEventListener("click", e => {
-          e.preventDefault();
-          const sub = link.parentElement;
-          const content = sub.querySelector(".sub-dropdown-content");
-          const isOpen = content.style.display === "block";
-          document.querySelectorAll(".sub-dropdown-content").forEach(s => s.style.display = "none");
-          content.style.display = isOpen ? "none" : "block";
-        });
-      });
-
-      document.addEventListener("click", e => {
-        if (!e.target.closest(".dropdown")) {
-          document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
-        }
-        if (!e.target.closest(".sub-dropdown")) {
-          document.querySelectorAll(".sub-dropdown-content").forEach(s => s.style.display = "none");
-        }
+    document.querySelectorAll(".dropdown > a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const dropdown = link.parentElement.querySelector(".dropdown-content");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
       });
     });
 
-    function bookNow(packageName) {
-      alert(`Booking requested for: ${packageName}`);
-    }
+    document.querySelectorAll(".sub-dropdown > a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const sub = link.parentElement.querySelector(".sub-dropdown-content");
+        sub.style.display = sub.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+      }
+    });
   </script>
 </body>
 </html>
