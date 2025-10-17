@@ -262,6 +262,8 @@
           </li>
         </ul>
       </li>
+
+      <li><a href="explore.html">Explore Destinations</a></li>
       <li><a href="nairobi_nonresident.html">Non-Residential</a></li>
       <li><a href="galley.html">Gallery</a></li>
       <li><a href="index.html#about">About</a></li>
@@ -280,7 +282,7 @@
 
     <div class="packages">
       <div class="package">
-        <img src="images/nai1.jpg" alt="Kiambethu Tea Farm" loading="lazy">
+        <img src="images/nai1.jpg" alt="Kiambethu Tea Farm">
         <h3>Day Trip to Kiambethu Tea Farm</h3>
         <p>Enjoy a serene countryside experience with a guided farm tour, tea tasting, and garden lunch.</p>
         <p class="price">From $180 per person</p>
@@ -288,7 +290,7 @@
       </div>
 
       <div class="package">
-        <img src="images/nai2.jpg" alt="Nairobi Day Tour" loading="lazy">
+        <img src="images/nai2.jpg" alt="Nairobi Day Tour">
         <h3>Day Trip to Nairobi</h3>
         <p>Discover Nairobi’s highlights — visit Giraffe Centre, Elephant Orphanage, and Karen Blixen Museum.</p>
         <p class="price">From $150 per person</p>
@@ -296,59 +298,11 @@
       </div>
 
       <div class="package">
-        <img src="images/nai3.jpg" alt="Naivasha Day Trip" loading="lazy">
+        <img src="images/nai3.jpg" alt="Naivasha Day Trip">
         <h3>Day Trip to Naivasha</h3>
         <p>Enjoy a scenic drive, Crescent Island walk among wildlife, and optional Lake Naivasha boat ride.</p>
         <p class="price">From $190 per person</p>
         <button class="book-btn" onclick="bookNow('Day Trip To Naivasha')">Book Now</button>
-      </div>
-
-      <div class="package">
-        <img src="images/nai4.jpg" alt="Amboseli Private Safari" loading="lazy">
-        <h3>3 Days / 2 Nights Amboseli Private Safari</h3>
-        <p>Experience Amboseli’s elephants and views of Mt. Kilimanjaro in a private safari adventure.</p>
-        <p class="price">From $780 per person</p>
-        <button class="book-btn" onclick="bookNow('3 Days / 2 Nights Amboseli Private Safari')">Book Now</button>
-      </div>
-
-      <div class="package">
-        <img src="images/nai5.jpg" alt="Maasai Mara Safari" loading="lazy">
-        <h3>3 Days / 2 Nights Maasai Mara National Park</h3>
-        <p>Witness the Great Migration and enjoy game drives in Kenya’s most iconic safari destination.</p>
-        <p class="price">From $850 per person</p>
-        <button class="book-btn" onclick="bookNow('3 Days / 2 Nights Maasai Mara National Park')">Book Now</button>
-      </div>
-
-      <div class="package">
-        <img src="images/nai6.jpg" alt="Lake Nakuru and Mara" loading="lazy">
-        <h3>5 Days / 4 Nights Nakuru, Mara & Naivasha</h3>
-        <p>See flamingos at Lake Nakuru, cruise Naivasha, and explore the Mara’s vast savannahs.</p>
-        <p class="price">From $1,250 per person</p>
-        <button class="book-btn" onclick="bookNow('5 Days / 4 Nights Nakuru, Mara & Naivasha')">Book Now</button>
-      </div>
-
-      <div class="package">
-        <img src="images/nai7.jpg" alt="Amboseli Lake Nakuru Mara" loading="lazy">
-        <h3>6 Days / 5 Nights Amboseli, Nakuru & Maasai Mara</h3>
-        <p>Visit Kenya’s top parks in one trip — Amboseli, Lake Nakuru, and Maasai Mara.</p>
-        <p class="price">From $1,550 per person</p>
-        <button class="book-btn" onclick="bookNow('6 Days / 5 Nights Amboseli, Lake Nakuru and Maasai Mara')">Book Now</button>
-      </div>
-
-      <div class="package">
-        <img src="images/nai8.jpg" alt="Samburu Safari" loading="lazy">
-        <h3>3 Days / 2 Nights Samburu Private Safari</h3>
-        <p>Explore the rugged north, home to unique wildlife species like the Grevy’s zebra and reticulated giraffe.</p>
-        <p class="price">From $920 per person</p>
-        <button class="book-btn" onclick="bookNow('3 Days / 2 Nights Samburu Private Safari')">Book Now</button>
-      </div>
-
-      <div class="package">
-        <img src="images/nai9.jpg" alt="Kenya Grand Safari" loading="lazy">
-        <h3>7 Days / 6 Nights Amboseli, Naivasha, Nakuru & Mara</h3>
-        <p>The ultimate Kenya adventure — from Amboseli’s elephants to Mara’s big cats, experience it all!</p>
-        <p class="price">From $1,950 per person</p>
-        <button class="book-btn" onclick="bookNow('7 Days / 6 Nights Amboseli, Naivasha, Nakuru & Mara')">Book Now</button>
       </div>
     </div>
 
@@ -394,13 +348,9 @@
       });
     });
 
-    // Booking redirect
     function bookNow(packageName) {
       alert(`Booking requested for: ${packageName}`);
-      // Replace alert with your booking page if needed:
-      // window.location.href = `booking.html?package=${encodeURIComponent(packageName)}`;
     }
   </script>
-
 </body>
 </html>
