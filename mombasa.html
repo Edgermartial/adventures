@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mombasa Beach Packages | Yobby Adventures</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+      color: white;
+      text-align: center;
+      padding: 40px 10px;
+    }
+
+    header h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1em;
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ff7a00;
+      font-size: 1.8em;
+    }
+
+    p {
+      max-width: 750px;
+      margin: 15px auto;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* Overview Section */
+    .overview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      background: #f8fff7;
+      padding: 60px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin: 50px auto;
+      max-width: 1100px;
+      flex-wrap: wrap;
+    }
+
+    .overview img {
+      width: 45%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .overview-content {
+      width: 50%;
+      text-align: left;
+    }
+
+    @media (max-width: 900px) {
+      .overview {
+        flex-direction: column;
+        text-align: center;
+      }
+      .overview img, .overview-content {
+        width: 100%;
+      }
+    }
+
+    /* Packages Section */
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .package {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      background: #fff;
+    }
+
+    .package:hover {
+      transform: scale(1.03);
+    }
+
+    .package img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.3s ease;
+    }
+
+    .package:hover img {
+      transform: scale(1.08);
+      filter: brightness(90%);
+    }
+
+    .package h3 {
+      color: #3dbb3d;
+      margin: 15px 0 5px;
+    }
+
+    .package p {
+      font-size: 0.95em;
+      color: #444;
+      padding: 0 10px;
+    }
+
+    .price {
+      color: #ff7a00;
+      font-weight: bold;
+      margin: 5px 0 15px;
+    }
+
+    .book-btn {
+      background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background 0.3s ease;
+      font-weight: bold;
+    }
+
+    .book-btn:hover {
+      background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    }
+
+    footer {
+      background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mombasa Beach Packages</h1>
+    <p>Experience the soul of Kenya’s coast — vibrant culture, white sands, and turquoise waters 🌴</p>
+  </header>
+
+  <!-- Overview Section -->
+  <section class="overview">
+    <img src="images/mombasa1.jpg" alt="Mombasa Beach Overview" loading="lazy">
+    <div class="overview-content">
+      <h2>About Mombasa</h2>
+      <p>
+        Mombasa, Kenya’s coastal gem, is a melting pot of Swahili culture, history, and tropical charm.
+        From the iconic Fort Jesus to the soft beaches of Nyali and Bamburi, it’s a destination full of
+        sunshine, spice, and smiles.
+      </p>
+      <p>
+        Whether you’re exploring coral reefs, taking a dhow cruise at sunset, or enjoying seafood by the ocean,
+        Mombasa is the perfect beach getaway for all travelers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Packages Section -->
+  <section>
+    <h2>Available Packages</h2>
+    <p>Explore our Mombasa getaway packages — from budget escapes to luxury coastal experiences.</p>
+
+    <div class="packages">
+      <div class="package">
+        <img src="images/mombasa2.jpg" alt="Budget Beach Escape" loading="lazy">
+        <h3>3-Day Budget Beach Escape</h3>
+        <p>Perfect for travelers seeking relaxation, local cuisine, and short coastal adventures.</p>
+        <p class="price">From $349 per person</p>
+        <button class="book-btn" onclick="bookNow('3-Day Budget Beach Escape')">Book Now</button>
+      </div>
+
+      <div class="package">
+        <img src="images/mombasa3.jpg" alt="Luxury Oceanfront Retreat" loading="lazy">
+        <h3>5-Day Luxury Oceanfront Retreat</h3>
+        <p>Stay in world-class beachfront resorts with spa treatments, snorkeling, and private dinners.</p>
+        <p class="price">From $899 per person</p>
+        <button class="book-btn" onclick="bookNow('5-Day Luxury Oceanfront Retreat')">Book Now</button>
+      </div>
+
+      <div class="package">
+        <img src="images/mombasa4.jpg" alt="Family Coastal Holiday" loading="lazy">
+        <h3>7-Day Family Coastal Holiday</h3>
+        <p>Fun for the whole family — beach games, marine park visits, and cultural excursions.</p>
+        <p class="price">From $699 per person</p>
+        <button class="book-btn" onclick="bookNow('7-Day Family Coastal Holiday')">Book Now</button>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </section>
+
+  <footer>
+    © 2025 Yobby Adventures | Nairobi, Kenya. All rights reserved.
+  </footer>
+
+  <script>
+    function bookNow(packageName) {
+      alert(`Booking requested for: ${packageName}`);
+      // You can later replace this with:
+      // window.location.href = `booking.html?package=${encodeURIComponent(packageName)}`;
+    }
+  </script>
+
+</body>
+</html>

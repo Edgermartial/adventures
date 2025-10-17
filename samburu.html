@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samburu Packages | Yobby Adventures</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: #333;
+  }
+
+  header {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+  header h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 1.1em;
+  }
+
+  section {
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  h2 {
+    color: #3dbb3d;
+    font-size: 1.8em;
+  }
+
+  p {
+    max-width: 750px;
+    margin: 15px auto;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* Overview Section */
+  .overview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background: #f9fff8;
+    padding: 60px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin: 50px auto;
+    max-width: 1100px;
+    flex-wrap: wrap;
+  }
+
+  .overview img {
+    width: 45%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .overview-content {
+    width: 50%;
+    text-align: left;
+  }
+
+  @media (max-width: 900px) {
+    .overview {
+      flex-direction: column;
+      text-align: center;
+    }
+    .overview img, .overview-content {
+      width: 100%;
+    }
+  }
+
+  /* Packages Section */
+  .packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .package {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    background: #fff;
+  }
+
+  .package:hover {
+    transform: scale(1.03);
+  }
+
+  .package img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.3s ease;
+  }
+
+  .package:hover img {
+    transform: scale(1.08);
+    filter: brightness(90%);
+  }
+
+  .package h3 {
+    color: #3dbb3d;
+    margin: 15px 0 5px;
+  }
+
+  .package p {
+    font-size: 0.95em;
+    color: #444;
+    padding: 0 10px;
+  }
+
+  .price {
+    color: #ff7a00;
+    font-weight: bold;
+    margin: 5px 0 15px;
+  }
+
+  .book-btn {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+    font-weight: bold;
+  }
+
+  .book-btn:hover {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+  }
+
+  .back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+  }
+
+  .back-btn:hover {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+  }
+
+  footer {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Samburu National Reserve Packages</h1>
+  <p>Discover the wild beauty of Northern Kenya — where culture meets untamed nature 🐘</p>
+</header>
+
+<!-- Overview Section -->
+<section class="overview">
+  <img src="images/samburu1.jpg" alt="Samburu National Reserve Overview">
+  <div class="overview-content">
+    <h2>About Samburu National Reserve</h2>
+    <p>
+      Samburu National Reserve is a rugged, remote, and enchanting wilderness located in northern Kenya, 
+      along the banks of the Ewaso Nyiro River. It’s home to the rare “Samburu Special Five” — Grevy’s zebra, 
+      reticulated giraffe, Somali ostrich, gerenuk, and Beisa oryx.
+    </p>
+    <p>
+      Beyond the wildlife, Samburu offers cultural richness with the semi-nomadic Samburu people, breathtaking 
+      landscapes, and a serene escape from the crowds. Expect golden savannahs, palm-fringed rivers, and 
+      sunsets that paint the sky in fiery hues.
+    </p>
+  </div>
+</section>
+
+<!-- Packages Section -->
+<section>
+  <h2>Available Packages</h2>
+  <p>Explore our curated Samburu safari experiences — designed for adventure, relaxation, and authentic encounters.</p>
+
+  <div class="packages">
+    <div class="package">
+      <img src="images/samburu2.jpg" alt="Samburu Classic Safari">
+      <h3>3-Day Classic Safari</h3>
+      <p>Enjoy game drives, scenic views, and cultural visits in this short yet rich safari experience.</p>
+      <p class="price">From $549 per person</p>
+      <button class="book-btn" onclick="bookNow('3-Day Classic Safari')">Book Now</button>
+    </div>
+
+    <div class="package">
+      <img src="images/samburu3.jpg" alt="Samburu Luxury Safari">
+      <h3>4-Day Luxury Safari</h3>
+      <p>Stay in luxury lodges, savor bush dinners, and enjoy exclusive guided drives through the reserve.</p>
+      <p class="price">From $899 per person</p>
+      <button class="book-btn" onclick="bookNow('4-Day Luxury Safari')">Book Now</button>
+    </div>
+
+    <div class="package">
+      <img src="images/samburu4.jpg" alt="Samburu Cultural Expedition">
+      <h3>5-Day Cultural Expedition</h3>
+      <p>Experience the Samburu way of life with cultural tours and wildlife adventures combined.</p>
+      <p class="price">From $749 per person</p>
+      <button class="book-btn" onclick="bookNow('5-Day Cultural Expedition')">Book Now</button>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</section>
+
+<footer>
+  © 2025 Yobby Adventures | Nairobi, Kenya. All rights reserved.
+</footer>
+
+<script>
+  function bookNow(packageName) {
+    // Redirect to booking page with selected package name
+    window.location.href = `booking.html?package=${encodeURIComponent(packageName)}`;
+  }
+</script>
+
+</body>
+</html>

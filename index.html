@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yobby Adventures | Explore Kenya & Beyond</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    scroll-behavior: smooth;
+  }
+
+  /* Navbar */
+  nav {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  nav ul li {
+    position: relative;
+    margin: 0 15px;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  nav ul li a:hover {
+    color: #ff7a00;
+  }
+
+  /* Dropdowns */
+  .dropdown-content, .sub-dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 200px;
+    text-align: left;
+    z-index: 999;
+  }
+  .dropdown-content {
+    top: 40px;
+    left: 0;
+  }
+  .dropdown-content li, .sub-dropdown-content li { margin: 0; }
+  .dropdown-content a, .sub-dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+  }
+  .dropdown-content a:hover, .sub-dropdown-content a:hover {
+    background: #ff7a00;
+    color: #fff;
+  }
+  .sub-dropdown { position: relative; }
+  .sub-dropdown-content {
+    top: 0;
+    left: 200px;
+    min-width: 230px;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    text-align: center;
+    padding: 50px 10px;
+  }
+  .logo {
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+  .logo span {
+    color: #ff7a00;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0 10px;
+  }
+
+  /* Section styling */
+  section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  section h2 {
+    color: #ff7a00;
+    font-size: 2em;
+  }
+  section p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 20px auto;
+    color: #444;
+  }
+
+  /* Feature Tours */
+  .tours {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .tour {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .tour img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .tour:hover {
+    transform: scale(1.03);
+  }
+  .tour h3 {
+    color: #3dbb3d;
+    margin: 10px 0;
+  }
+
+  /* Explore Destinations */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: #eee;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .destination {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .destination img {
+    width: 100%;
+    height: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.3s ease;
+    display: block;
+  }
+  .destination:hover img {
+    transform: scale(1.08);
+    filter: brightness(90%);
+  }
+  .destination h4 {
+    margin: 10px 0 5px;
+    color: #3dbb3d;
+  }
+  .price {
+    font-weight: bold;
+    color: #ff7a00;
+  }
+  .explore-btn {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .explore-btn:hover {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+  }
+
+  /* Why Choose Us */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .why img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  /* Footer */
+  footer {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+  }
+
+  /* Chat button */
+  #chat-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  #chat-box {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 25px;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  #chat-header {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+  }
+  #chat-messages { height: 180px; overflow-y: auto; padding: 10px; }
+  #chat-input { display: flex; border-top: 1px solid #ccc; }
+  #chat-input input { flex: 1; border: none; padding: 10px; }
+  #chat-input button { background: #3dbb3d; border: none; color: white; padding: 10px 15px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Tours ▾</a>
+      <ul class="dropdown-content">
+        <li class="sub-dropdown">
+          <a href="#">Domestic Deals ▸</a>
+          <ul class="sub-dropdown-content">
+            <li><a href="amboseli.html">Amboseli Packages</a></li>
+            <li><a href="diani.html">Diani Packages</a></li>
+            <li><a href="malindi.html">Malindi Packages</a></li>
+            <li><a href="mombasa.html">Mombasa Beach Packages</a></li>
+            <li><a href="samburu.html">Samburu Packages</a></li>
+            <li><a href="tsavo.html">Tsavo Packages</a></li>
+            <li><a href="wildbeest.html">Wildbeest Migration Packages</a></li>
+          </ul>
+        </li>
+        <li class="sub-dropdown">
+          <a href="#">International Tours ▸</a>
+          <ul class="sub-dropdown-content">
+            <li><a href="dubai.html">Dubai Adventure</a></li>
+            <li><a href="thailand.html">Thailand Getaway</a></li>
+          </ul>
+        </li>
+        <li class="sub-dropdown">
+          <a href="#">Africa Tours ▸</a>
+          <ul class="sub-dropdown-content">
+            <li><a href="serengeti.html">Serengeti Safari</a></li>
+            <li><a href="victoriafalls.html">Victoria Falls</a></li>
+            <li><a href="capetown.html">Cape Town Explorer</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="nairobi_nonresident.html">Non-Residential</a></li>
+    <li><a href="galley.html">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- Header -->
+<header id="home">
+  <div class="logo"><span>Yobby</span> Adventures</div>
+  <p>Kenya’s #1 Adventure Tours — Explore, Experience, Enjoy!</p>
+</header>
+
+<!-- FEATURE TOURS -->
+<section id="feature-tours">
+  <h2>Featured Tours</h2>
+  <p>Unforgettable journeys designed to inspire your next adventure.</p>
+  <div class="tours">
+    <div class="tour">
+      <img src="images/masaai.jpg" alt="Safari">
+      <h3>Masai Mara Safari</h3>
+      <p>Witness the Great Migration and stunning wildlife.</p>
+    </div>
+    <div class="tour">
+      <img src="images/diani.jpg" alt="Diani">
+      <h3>Diani Beach Escape</h3>
+      <p>Relax by the turquoise waters of the Kenyan coast.</p>
+    </div>
+    <div class="tour">
+      <img src="images/desert.jpg" alt="Dubai">
+      <h3>Dubai Desert Adventure</h3>
+      <p>Experience luxury and thrill in the desert dunes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE DESTINATIONS -->
+<section id="explore">
+  <h2>Explore Destinations</h2>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="openTab(event, 'kenya')">Kenya</button>
+    <button class="tab-btn" onclick="openTab(event, 'egypt')">Egypt</button>
+    <button class="tab-btn" onclick="openTab(event, 'southafrica')">South Africa</button>
+    <button class="tab-btn" onclick="openTab(event, 'tanzania')">Tanzania</button>
+    <button class="tab-btn" onclick="openTab(event, 'dubai')">Dubai</button>
+  </div>
+
+  <div id="kenya" class="tab-content active">
+    <div class="destination">
+      <img src="images/tsavo.jpg" alt="">
+      <h4>Masai Mara Safari</h4>
+      <p class="price">From $999</p>
+      <a href="images/masaai.html" class="explore-btn">Explore</a>
+    </div>
+    <div class="destination">
+      <img src="images/amboseli.jpg" alt="">
+      <h4>Amboseli National Park</h4>
+      <p class="price">From $850</p>
+      <a href="images/amboseli.html" class="explore-btn">Explore</a>
+    </div>
+  </div>
+
+  <div id="egypt" class="tab-content">
+    <div class="destination">
+      <img src="images/pyramids.jpg" alt="">
+      <h4>Pyramids of Giza</h4>
+      <p class="price">From $1,200</p>
+      <a href="images/egypt.html" class="explore-btn">Explore</a>
+    </div>
+  </div>
+
+  <div id="southafrica" class="tab-content">
+    <div class="destination">
+      <img src="images/kruger.jpg" alt="">
+      <h4>Kruger National Park</h4>
+      <p class="price">From $1,400</p>
+      <a href="capetown.html" class="explore-btn">Explore</a>
+    </div>
+  </div>
+
+  <div id="tanzania" class="tab-content">
+    <div class="destination">
+      <img src="images/sere.jpg" alt="">
+      <h4>Serengeti Safari</h4>
+      <p class="price">From $1,150</p>
+      <a href="serengeti.html" class="explore-btn">Explore</a>
+    </div>
+  </div>
+
+  <div id="dubai" class="tab-content">
+    <div class="destination">
+      <img src="images/desert.jpg" alt="">
+      <h4>Desert Safari Experience</h4>
+      <p class="price">From $1,300</p>
+      <a href="dubai.html" class="explore-btn">Explore</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <h2>Why Choose Us</h2>
+  <div class="why-grid">
+    <div class="why">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Lion">
+      <h4>Expert Guides</h4>
+      <p>Our safari guides are highly trained to ensure a safe and thrilling wildlife experience.</p>
+    </div>
+    <div class="why">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616409.png" alt="Elephant">
+      <h4>Unmatched Adventures</h4>
+      <p>Every tour is designed to immerse you in the beauty of Africa’s wilderness.</p>
+    </div>
+    <div class="why">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616431.png" alt="Giraffe">
+      <h4>Value for Money</h4>
+      <p>Enjoy luxurious experiences at competitive rates — adventure meets affordability!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Yobby Adventures</h2>
+  <p><strong>Yobby Adventures</strong> is your trusted travel partner based in Kenya. We design unforgettable safaris, thrilling adventures, and cultural experiences across Kenya, Africa, and the world.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: info@yobbyadventures.com</p>
+  <p>Phone: +254 712 345 678</p>
+  <p>Visit us: Nairobi, Kenya</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2025 Yobby Adventures | Nairobi, Kenya. All rights reserved.
+</footer>
+
+<!-- Chat Widget -->
+<button id="chat-button">💬 Chat with Us</button>
+<div id="chat-box">
+  <div id="chat-header">Yobby Adventures Live Chat</div>
+  <div id="chat-messages">
+    <p><strong>Yobby:</strong> Hi there! 👋 How can we help you plan your next adventure?</p>
+  </div>
+  <div id="chat-input">
+    <input type="text" id="chatText" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  // Dropdown click-based logic
+  document.addEventListener("DOMContentLoaded", () => {
+    // Main dropdown
+    document.querySelectorAll(".dropdown > a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const dropdown = link.parentElement;
+        const content = dropdown.querySelector(".dropdown-content");
+        const isOpen = content.style.display === "block";
+
+        // Close all first
+        document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+        content.style.display = isOpen ? "none" : "block";
+      });
+    });
+
+    // Sub-dropdowns
+    document.querySelectorAll(".sub-dropdown > a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const sub = link.parentElement;
+        const content = sub.querySelector(".sub-dropdown-content");
+        const isOpen = content.style.display === "block";
+
+        document.querySelectorAll(".sub-dropdown-content").forEach(s => s.style.display = "none");
+        content.style.display = isOpen ? "none" : "block";
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+      }
+      if (!e.target.closest(".sub-dropdown")) {
+        document.querySelectorAll(".sub-dropdown-content").forEach(s => s.style.display = "none");
+      }
+    });
+  });
+
+  // Tabs
+  function openTab(evt, tabName) {
+    document.querySelectorAll(".tab-content").forEach(tc => tc.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(tb => tb.classList.remove("active"));
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+  }
+
+  // Chat toggle
+  const chatBtn = document.getElementById("chat-button");
+  const chatBox = document.getElementById("chat-box");
+  chatBtn.addEventListener("click", () => {
+    chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
+  });
+
+  // Send chat message
+  function sendMessage() {
+    const textInput = document.getElementById("chatText");
+    const message = textInput.value.trim();
+    if (message) {
+      const chatMessages = document.getElementById("chat-messages");
+      chatMessages.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+      textInput.value = "";
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      setTimeout(() => {
+        chatMessages.innerHTML += `<p><strong>Yobby:</strong> Thanks for your message! We'll respond shortly. 😊</p>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 800);
+    }
+  }
+</script>
+</body>
+</html>

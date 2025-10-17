@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amboseli Packages | Yobby Adventures</title>
+
+<link rel="icon" href="logo.jpg" type="image/jpeg">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: #333;
+  }
+
+  header {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+  header h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    font-size: 1.1em;
+  }
+
+  section {
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  h2 {
+    color: #ff7a00;
+    font-size: 1.8em;
+  }
+
+  p {
+    max-width: 750px;
+    margin: 15px auto;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* Overview Section */
+  .overview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background: #f9f9f9;
+    padding: 60px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin: 50px auto;
+    max-width: 1100px;
+    flex-wrap: wrap;
+  }
+
+  .overview img {
+    width: 45%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .overview-content {
+    width: 50%;
+    text-align: left;
+  }
+
+  @media (max-width: 900px) {
+    .overview {
+      flex-direction: column;
+      text-align: center;
+    }
+    .overview img, .overview-content {
+      width: 100%;
+    }
+  }
+
+  /* Packages */
+  .packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .package {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    background: #fff;
+  }
+
+  .package:hover {
+    transform: scale(1.03);
+  }
+
+  .package img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .package h3 {
+    color: #3dbb3d;
+    margin: 15px 0 5px;
+  }
+
+  .package p {
+    font-size: 0.95em;
+    color: #444;
+    padding: 0 10px;
+  }
+
+  .price {
+    color: #ff7a00;
+    font-weight: bold;
+    margin: 5px 0 15px;
+  }
+
+  .book-btn {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+    font-weight: bold;
+  }
+
+  .book-btn:hover {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+  }
+
+  .back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: white;
+    background: #3dbb3d;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+  }
+
+  .back-btn:hover {
+    background: #ff7a00;
+  }
+
+  footer {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Amboseli National Park Packages</h1>
+  <p>Discover the majestic elephants and breathtaking views of Mt. Kilimanjaro</p>
+</header>
+
+<!-- Overview Section -->
+<section class="overview">
+  <img src="amboseli2.jpg" alt="Amboseli National Park Overview">
+  <div class="overview-content">
+    <h2>About Amboseli National Park</h2>
+    <p>
+      Amboseli National Park is one of Kenya’s most iconic safari destinations,
+      renowned for its large herds of elephants and views of Mount Kilimanjaro.
+    </p>
+    <p>
+      Experience rich wildlife, vibrant Maasai culture, and some of the most
+      breathtaking sunsets in Africa.
+    </p>
+  </div>
+</section>
+
+<!-- Packages Section -->
+<section>
+  <h2>Available Packages</h2>
+  <p>Choose from our curated Amboseli adventures for couples, families, and groups. Each package includes transport, park fees, meals, and guided safaris.</p>
+
+  <div class="packages">
+    <div class="package">
+      <img src="am1.jpg" alt="Amboseli Budget Safari">
+      <h3>3-Day Budget Safari</h3>
+      <p>Perfect for travelers looking to experience Amboseli’s wildlife affordably.</p>
+      <p class="price">From $499 per person</p>
+      <button class="book-btn" onclick="bookNow('3-Day Budget Safari')">Book Now</button>
+    </div>
+
+    <div class="package">
+      <img src="am2.jpg" alt="Amboseli Luxury Safari">
+      <h3>4-Day Luxury Safari</h3>
+      <p>Stay in top lodges, enjoy private game drives, and relax with scenic Kilimanjaro views.</p>
+      <p class="price">From $899 per person</p>
+      <button class="book-btn" onclick="bookNow('4-Day Luxury Safari')">Book Now</button>
+    </div>
+
+    <div class="package">
+      <img src="am3.jpg" alt="Amboseli Family Tour">
+      <h3>5-Day Family Tour</h3>
+      <p>Enjoy Amboseli with your loved ones, including kids’ safaris and fun nature walks.</p>
+      <p class="price">From $749 per person</p>
+      <button class="book-btn" onclick="bookNow('5-Day Family Tour')">Book Now</button>
+    </div>
+  </div>
+
+  <!-- Back to home -->
+  <a href="index.html" class="back-btn">← Back to Home</a>
+</section>
+
+<footer>
+  © 2025 Yobby Adventures | Nairobi, Kenya. All rights reserved.
+</footer>
+
+<script>
+  // ✅ Redirect to booking page with selected package name
+  function bookNow(packageName) {
+    window.location.href = "booking.html?package=" + encodeURIComponent(packageName);
+  }
+</script>
+
+</body>
+</html>

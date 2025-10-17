@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yobby Adventures | Gallery</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+
+  /* Navbar */
+  nav {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  nav ul li {
+    position: relative;
+    margin: 0 15px;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  nav ul li a:hover { color: #ff7a00; }
+
+  .dropdown-content, .sub-dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 200px;
+    text-align: left;
+    z-index: 999;
+  }
+  .dropdown-content { top: 40px; left: 0; }
+  .dropdown-content li, .sub-dropdown-content li { margin: 0; }
+  .dropdown-content a, .sub-dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+  }
+  .dropdown-content a:hover, .sub-dropdown-content a:hover {
+    background: #ff7a00;
+    color: #fff;
+  }
+  .sub-dropdown { position: relative; }
+  .sub-dropdown-content { top: 0; left: 200px; min-width: 230px; }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    text-align: center;
+    padding: 50px 10px;
+  }
+  header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+  header p {
+    font-size: 1.1em;
+    margin-top: 10px;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+    border: 4px solid #ff7a00;
+    box-shadow: 0 0 25px #3dbb3d;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .close-btn:hover { color: #ff7a00; }
+
+  /* Footer */
+  footer {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Tours ▾</a>
+      <ul class="dropdown-content">
+        <li class="sub-dropdown">
+          <a href="#">Domestic Deals ▸</a>
+          <ul class="sub-dropdown-content">
+            <li><a href="amboseli.html">Amboseli Packages</a></li>
+            <li><a href="diani.html">Diani Packages</a></li>
+            <li><a href="malindi.html">Malindi Packages</a></li>
+            <li><a href="mombasa.html">Mombasa Beach Packages</a></li>
+            <li><a href="samburu.html">Samburu Packages</a></li>
+            <li><a href="tsavo.html">Tsavo Packages</a></li>
+            <li><a href="wildbeest.html">Wildbeest Migration Packages</a></li>
+          </ul>
+        </li>
+        <li class="sub-dropdown">
+          <a href="#">International Tours ▸</a>
+          <ul class="sub-dropdown-content">
+            <li><a href="dubai.html">Dubai Adventure</a></li>
+            <li><a href="thailand.html">Thailand Getaway</a></li>
+          </ul>
+        </li>
+        <li class="sub-dropdown">
+          <a href="#">Africa Tours ▸</a>
+          <ul class="sub-dropdown-content">
+            <li><a href="serengeti.html">Serengeti Safari</a></li>
+            <li><a href="victoriafalls.html">Victoria Falls</a></li>
+            <li><a href="capetown.html">Cape Town Explorer</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="nairobi_nonresident.html">Non-Residential</a></li>
+    <li><a href="galley.html" class="active">Gallery</a></li>
+  </ul>
+</nav>
+
+<!-- Header -->
+<header>
+  <h1>📸 Yobby Adventures Gallery</h1>
+  <p>Explore the unforgettable moments from Kenya & beyond</p>
+</header>
+
+<!-- Gallery -->
+<div class="gallery" id="gallery"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" id="closeBtn">&times;</span>
+  <img id="lightboxImg" src="" alt="Preview">
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2025 Yobby Adventures | Nairobi, Kenya. All rights reserved.
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Dropdown Menu Logic
+  document.querySelectorAll(".dropdown > a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const content = link.nextElementSibling;
+      const isOpen = content.style.display === "block";
+      document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+      content.style.display = isOpen ? "none" : "block";
+    });
+  });
+
+  document.querySelectorAll(".sub-dropdown > a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const content = link.nextElementSibling;
+      const isOpen = content.style.display === "block";
+      document.querySelectorAll(".sub-dropdown-content").forEach(s => s.style.display = "none");
+      content.style.display = isOpen ? "none" : "block";
+    });
+  });
+
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".dropdown")) 
+      document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+    if (!e.target.closest(".sub-dropdown")) 
+      document.querySelectorAll(".sub-dropdown-content").forEach(s => s.style.display = "none");
+  });
+
+  // Gallery Lightbox
+  const galleryContainer = document.getElementById("gallery");
+  const totalImages = 45;
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // Load images dynamically
+  for (let i = 1; i <= totalImages; i++) {
+    const img = document.createElement("img");
+    img.src = `images/g${i}.jpg`; // e.g. images/g1.jpg
+    img.alt = `Yobby Gallery Image ${i}`;
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = "flex";
+    });
+    galleryContainer.appendChild(img);
+  }
+
+  // Lightbox close events
+  closeBtn.addEventListener("click", () => lightbox.style.display = "none");
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) lightbox.style.display = "none";
+  });
+});
+</script>
+
+</body>
+</html>
