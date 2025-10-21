@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Yobby Adventures</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: #333;
+  }
+
+  header {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+  }
+
+  .login {
+    text-align: center;
+  }
+
+  input[type="password"] {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+
+  button {
+    background: linear-gradient(90deg, #ff7a00, #3dbb3d);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  th {
+    background: #3dbb3d;
+    color: white;
+  }
+
+  .reply-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  footer {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Yobby Adventures Admin Dashboard</h1>
+</header>
+
+<div class="container">
+  <div id="login-section" class="login">
+    <h2>Admin Login</h2>
+    <input type="password" id="adminPass" placeholder="Enter password">
+    <button onclick="checkLogin()">Login</button>
+  </div>
+
+  <div id="dashboard" style="display:none;">
+    <h2>Messages & Bookings</h2>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Name</th><th>Email</th><th>Type</th><th>Message</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="data-body">
+        <tr><td colspan="5" style="text-align:center;">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<footer>© 2025 Yobby Adventures | Admin Portal</footer>
+
+<script>
+async function checkLogin() {
+  const inputPass = document.getElementById("adminPass").value.trim();
+  const res = await fetch("/.netlify/functions/reply?check=1&pass=" + encodeURIComponent(inputPass));
+  const ok = await res.json();
+  if (ok.success) {
+    document.getElementById("login-section").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    loadData();
+  } else {
+    alert("❌ Incorrect password.");
+  }
+}
+
+async function loadData() {
+  const res = await fetch("/.netlify/functions/reply?action=list");
+  const data = await res.json();
+  const tbody = document.getElementById("data-body");
+  tbody.innerHTML = "";
+
+  data.items.forEach((item, i) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.email}</td>
+      <td>${item.type}</td>
+      <td>${item.message}</td>
+      <td>
+        <form class="reply-form" onsubmit="sendReply(event, '${item.email}')">
+          <textarea placeholder='Type reply...'></textarea>
+          <button type='submit'>Send Reply</button>
+        </form>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+async function sendReply(event, email) {
+  event.preventDefault();
+  const message = event.target.querySelector("textarea").value.trim();
+  if (!message) return alert("Please type a reply.");
+  const response = await fetch("/.netlify/functions/reply", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, message })
+  });
+  const result = await response.json();
+  alert(result.message);
+  event.target.querySelector("textarea").value = "";
+}
+</script>
+</body>
+</html>

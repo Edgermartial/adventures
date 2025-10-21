@@ -148,15 +148,15 @@
 </footer>
 
 <script>
-  // ✅ Autofill selected package from URL (e.g., ?package=Amboseli+Luxury+Safari)
+  // ✅ Autofill selected package from URL
   const params = new URLSearchParams(window.location.search);
   const packageName = params.get('package');
   if (packageName) {
     document.getElementById('package').value = decodeURIComponent(packageName);
   }
 
-  // ✅ Handle booking + (simulated) M-Pesa process
-  document.getElementById("bookingForm").addEventListener("submit", function(event) {
+  // ✅ Submit booking to Netlify Function backend
+  document.getElementById("bookingForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const phone = document.getElementById("phone").value.trim();
@@ -165,10 +165,34 @@
       return;
     }
 
-    alert("✅ Booking received! An M-Pesa payment prompt would appear on your phone in a live environment.\n\n(This is a demo simulation.)");
+    const booking = {
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: phone,
+      package: document.getElementById("package").value.trim(),
+      date: document.getElementById("date").value,
+      message: document.getElementById("message").value.trim(),
+    };
 
-    // Reset form after submission
-    document.getElementById("bookingForm").reset();
+    try {
+      const response = await fetch("/.netlify/functions/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(booking),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("✅ " + result.message + "\\nThank you, " + booking.name + "!");
+        document.getElementById("bookingForm").reset();
+      } else {
+        alert("❌ Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      alert("⚠️ Network error. Please check your connection and try again.");
+      console.error(error);
+    }
   });
 </script>
 
