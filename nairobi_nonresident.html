@@ -15,54 +15,65 @@
       color: #333;
     }
 
-    /* Navbar */
-    nav {
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  /* Navbar */
+  nav {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  nav ul li {
+    position: relative;
+    margin: 0 15px;
+  }
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  nav ul li a:hover { color: #ff7a00; }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px;
-    }
+  .dropdown-content, .sub-dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 200px;
+    text-align: left;
+    z-index: 999;
+  }
+  .dropdown-content { top: 40px; left: 0; }
+  .dropdown-content li, .sub-dropdown-content li { margin: 0; }
+  .dropdown-content a, .sub-dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+  }
+  .dropdown-content a:hover, .sub-dropdown-content a:hover {
+    background: #ff7a00;
+    color: #fff;
+  }
+  .sub-dropdown { position: relative; }
+  .sub-dropdown-content { top: 0; left: 200px; min-width: 230px; }
 
-    .logo {
+     .logo {
       font-weight: bold;
       font-size: 1.3em;
       color: #3dbb3d;
       text-decoration: none;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    nav ul li {
-      position: relative;
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #ff7a00;
     }
 
     /* Dropdown menus */

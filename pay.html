@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Payment Method | Yobby Adventures</title>
+<link rel="icon" href="logo.jpg" type="image/jpeg">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    margin: 0;
+    color: #333;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  header {
+    background: linear-gradient(90deg, #3dbb3d, #ff7a00);
+    color: white;
+    padding: 40px 10px;
+  }
+
+  .payment-box {
+    background: #f9f9f9;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .instructions {
+    margin-top: 30px;
+    text-align: left;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .highlight {
+    background: #3dbb3d;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  a.back {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    color: white;
+    background: #ff7a00;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+  }
+
+  a.back:hover { background: #3dbb3d; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Choose Payment Method</h1>
+  <p>Finalize your safari booking securely.</p>
+</header>
+
+<div class="payment-box">
+  <h2>Hi <span id="guestName"></span> 👋</h2>
+  <p>You’re booking the <strong><span id="packageName"></span></strong> package.</p>
+
+  <label for="method">Select Payment Method:</label>
+  <select id="method">
+    <option value="" disabled selected>-- Choose your payment method --</option>
+    <option value="mpesa">M-Pesa</option>
+    <option value="airtel">Airtel Money</option>
+    <option value="bank">Bank Transfer</option>
+    <option value="paypal">PayPal</option>
+  </select>
+
+  <div id="instructions" class="instructions" style="display:none;"></div>
+
+  <a href="index.html" class="back">← Back to Home</a>
+</div>
+
+<script>
+  // ✅ Automatically show guest name and selected package
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById("guestName").textContent = decodeURIComponent(params.get("name") || "Guest");
+  document.getElementById("packageName").textContent = decodeURIComponent(params.get("package") || "Selected Safari");
+
+  const methodSelect = document.getElementById("method");
+  const instructionsDiv = document.getElementById("instructions");
+
+  methodSelect.addEventListener("change", function() {
+    const method = this.value;
+    instructionsDiv.style.display = "block";
+
+    let html = "";
+    if (method === "mpesa") {
+      html = `
+        <div class="highlight">Pay via M-Pesa</div>
+        <ol>
+          <li>Go to the M-Pesa menu on your phone.</li>
+          <li>Select <strong>Lipa na M-Pesa</strong> → <strong>Buy Goods and Services</strong>.</li>
+          <li>Enter Till Number: <strong>3171350</strong>.</li>
+          <li>Enter the amount for your safari package.</li>
+          <li>Confirm with your M-Pesa PIN.</li>
+          <li>You'll receive an SMS confirmation.</li>
+        </ol>`;
+    } else if (method === "airtel") {
+      html = `
+        <div class="highlight">Pay via Airtel Money</div>
+        <ol>
+          <li>Go to Airtel Money on your phone.</li>
+          <li>Select <strong>Make Payments</strong> → <strong>Buy Goods</strong>.</li>
+          <li>Enter Till Number: <strong>3171350</strong>.</li>
+          <li>Enter the amount and confirm.</li>
+          <li>Wait for the confirmation message.</li>
+        </ol>`;
+    } else if (method === "bank") {
+      html = `
+        <div class="highlight">Pay via Bank Transfer</div>
+        <p><strong>Bank Name:</strong> Yobby Adventures Bank</p>
+        <p><strong>Account Name:</strong> Yobby Adventures Ltd</p>
+        <p><strong>Account Number:</strong> 0123456789</p>
+        <p><strong>Branch:</strong> Nairobi Main</p>
+        <p><strong>SWIFT Code:</strong> YOBBKENA</p>
+        <p>After payment, email your receipt to <a href="mailto:payments@yobbyadventures.com">payments@yobbyadventures.com</a>.</p>`;
+    } else if (method === "paypal") {
+      html = `
+        <div class="highlight">Pay via PayPal</div>
+        <p>Click below to proceed to PayPal checkout.</p>
+        <a href="https://www.paypal.me/YobbyAdventures" target="_blank" style="display:inline-block;background:#3dbb3d;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;">Pay with PayPal</a>`;
+    }
+
+    instructionsDiv.innerHTML = html;
+  });
+</script>
+
+</body>
+</html>
